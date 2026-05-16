@@ -6,7 +6,7 @@ void setup() {
 void loop() {
   Serial.println("Hello ESP32!");
   digitalWrite(LED_PIN, HIGH);
-  delay(200);
+  delay(10);
   digitalWrite(LED_PIN, LOW);
-  delay(200);
+  delay(10);
 }

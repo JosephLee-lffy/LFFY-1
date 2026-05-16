@@ -1,17 +1,20 @@
 // 定义LED引脚
 const int ledPin = 2;  
-
+const int ledPing = 4; 
+const int ledPiny = 5;
 // 设置PWM属性
 const int freq = 5000;          // 频率 5000Hz
 const int resolution = 8;       // 分辨率 8位 (0-255)
 const int ledcChannel = 0;      // 新增：LEDC通道号（0~15任选）
-
+const int ledcChanne2 = 1;
 void setup() {
   Serial.begin(115200);
 
   // 标准ESP32 LEDC用法：先配置通道，再绑定引脚
   ledcSetup(ledcChannel, freq, resolution);
   ledcAttachPin(ledPin, ledcChannel);
+  ledcAttachPin(ledPing, ledcChanne2);
+  ledcAttachPin(ledPiny, ledcChanne2);
 }
 
 void loop() {
@@ -19,6 +22,7 @@ void loop() {
   for(int dutyCycle = 0; dutyCycle <= 255; dutyCycle++){   
     // 标准写法：通过通道号写入占空比
     ledcWrite(ledcChannel, dutyCycle);   
+    ledcWrite(ledcChanne2, dutyCycle-);
     delay(5);
   }
 
